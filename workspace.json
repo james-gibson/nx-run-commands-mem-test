@@ -1,6 +1,84 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "memtest": {
+      "root": "libs/memtest",
+      "sourceRoot": "libs/memtest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "hot": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "parallel": true,
+            "commands": [
+              {
+                "command": "nx watch memtest"
+              },
+              {
+                "command": "nx serve memtest"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "parallel": false,
+            "commands": [
+              {
+                "command": "node libs/memtest/src/serve.js"
+              }
+            ]
+          }
+        },
+        "start": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "parallel": false,
+            "commands": [
+              {
+                "command": "node libs/memtest/src/start.js"
+              },
+              {
+                "command": "nx prepare memtest"
+              },
+              {
+                "command": "nx hot memtest"
+              }
+            ]
+          }
+        },
+        "prepare": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "parallel": false,
+            "commands": [
+              {
+                "command": "node libs/memtest/src/prepare.js"
+              }
+            ]
+          }
+        },
+        "watch": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "parallel": false,
+            "commands": [
+              {
+                "command": "node libs/memtest/src/watch.js"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
