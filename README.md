@@ -49,7 +49,6 @@ Finished fake watch mode
 Actual behavior when running `$ nx start memtest`
 ```
 $ nx start memtest
-jgibson-mbp:test jgibson$ nx start memtest
 
 > nx run memtest:start 
 Starting fake compilation
